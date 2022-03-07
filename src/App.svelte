@@ -14,7 +14,10 @@
     CardFooter,
     Row,
     Col,
+    CardSubtitle,
+    Table,
   } from "sveltestrap";
+  import Footer from "./components/Footer.svelte";
   import Katex from "./Katex.svelte";
   import { initialInterval, maxRetries, exponentialFactor } from "./store";
 </script>
@@ -34,25 +37,25 @@
   <Container sm>
     <CardGroup>
       <Card class="shadow-lg mb-5 rounded">
-        <CardHeader />
+        <CardHeader><h2>Inputs</h2></CardHeader>
         <CardBody>
           <Form>
             <FormGroup>
               <InputGroup>
                 <InputGroupText>Initial Interval (seconds)</InputGroupText>
-                <Input type="number" bind:value={$initialInterval} />
+                <Input type="number" min={0} bind:value={$initialInterval} />
               </InputGroup>
             </FormGroup>
             <FormGroup>
               <InputGroup>
                 <InputGroupText>Max Retries</InputGroupText>
-                <Input type="number" bind:value={$maxRetries} />
+                <Input type="number" min={0} bind:value={$maxRetries} />
               </InputGroup>
             </FormGroup>
             <FormGroup>
               <InputGroup>
                 <InputGroupText>Exponential Factor</InputGroupText>
-                <Input type="number" bind:value={$exponentialFactor} />
+                <Input type="number" min={0} bind:value={$exponentialFactor} />
               </InputGroup>
             </FormGroup>
           </Form>
@@ -74,48 +77,58 @@
     />
   </h3>
   <Container sm>
-    <Row>
-      <Col>
-        <h4>Run Number</h4>
-      </Col>
-      <Col>
-        <h4>Elapsed Time in Seconds</h4>
-      </Col>
-      <Col>
-        <h4>Equation</h4>
-      </Col>
-    </Row>
-    {#each Array($maxRetries) as _blank, try_count}
-      <Row>
-        <Col>{try_count}</Col>
-        <Col
-          >{(
-            $initialInterval * Math.pow($exponentialFactor, try_count)
-          ).toLocaleString()}</Col
-        >
-        <Col>
-          <Katex
-            math={(
-              $initialInterval * Math.pow($exponentialFactor, try_count)
-            ).toLocaleString() +
-              " = " +
-              $initialInterval +
-              " * " +
-              $exponentialFactor +
-              "^{" +
-              try_count +
-              "}"}
-            displayMode
-          />
-        </Col>
-      </Row>
-    {/each}
+    <Table>
+      <thead>
+        <tr>
+          <th>Run #</th>
+          <th>Equation</th>
+          <th>Time in Seconds</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each Array($maxRetries) as _blank, try_count}
+          <tr>
+            <th scope="row">{try_count}</th>
+            <td
+              ><Katex
+                math={(
+                  $initialInterval * Math.pow($exponentialFactor, try_count)
+                ).toLocaleString() +
+                  " = " +
+                  $initialInterval +
+                  " * " +
+                  $exponentialFactor +
+                  "^{" +
+                  try_count +
+                  "}"}
+                displayMode
+              /></td
+            >
+            <td
+              >{(
+                $initialInterval * Math.pow($exponentialFactor, try_count)
+              ).toLocaleString()}
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </Table>
   </Container>
 
-  <h2>Technologies</h2>
+  <h2>Technologies In-Use</h2>
   <Row>
     <Col>
       <a href="https://svelte.dev/">Svelte</a>
+    </Col>
+  </Row>
+  <Row>
+    <Col>
+      <a href="https://sveltestrap.js.org/">SVELTESTRAP</a>
+    </Col>
+  </Row>
+  <Row>
+    <Col>
+      <a href="https://render.com/">render</a>
     </Col>
   </Row>
   <Row>
@@ -131,6 +144,7 @@
     </Col>
   </Row>
 </main>
+<Footer />
 
 <style>
   main {
