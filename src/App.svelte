@@ -19,7 +19,13 @@
   } from "sveltestrap";
   import Footer from "./components/Footer.svelte";
   import Katex from "./Katex.svelte";
-  import { initialInterval, maxRetries, exponentialFactor } from "./store";
+  import {
+    initialInterval,
+    maxRetries,
+    exponentialFactor,
+    maxBackoffTime,
+    totalTime,
+  } from "./store";
 </script>
 
 <Styles />
@@ -60,7 +66,10 @@
             </FormGroup>
           </Form>
         </CardBody>
-        <CardFooter />
+        <CardFooter>
+          <p>Total Time:</p>
+          <strong>{$totalTime.toLocaleString()} seconds</strong>
+        </CardFooter>
       </Card>
     </CardGroup>
   </Container>
