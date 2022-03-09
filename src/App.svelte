@@ -54,14 +54,14 @@
             </FormGroup>
             <FormGroup>
               <InputGroup>
-                <InputGroupText>Max Retries</InputGroupText>
-                <Input type="number" min={0} bind:value={$maxRetries} />
+                <InputGroupText>Exponential Factor</InputGroupText>
+                <Input type="number" min={0} bind:value={$exponentialFactor} />
               </InputGroup>
             </FormGroup>
             <FormGroup>
               <InputGroup>
-                <InputGroupText>Exponential Factor</InputGroupText>
-                <Input type="number" min={0} bind:value={$exponentialFactor} />
+                <InputGroupText>Max Retries</InputGroupText>
+                <Input type="number" min={0} bind:value={$maxRetries} />
               </InputGroup>
             </FormGroup>
           </Form>
