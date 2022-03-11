@@ -36,9 +36,7 @@
     This is a simple calculator inspired by <a
       href="https://exponentialbackoffcalculator.com/"
       >exponentialbackoffcalculator.com</a
-    >. It is written in <a href="https://svelte.dev/">Svelte</a>. Svelte is an
-    amazing framework for writing quick and easy web applications. It is truly
-    reactive. Be sure to go check it out for yourself.
+    >.
   </p>
   <Container sm>
     <CardGroup>
