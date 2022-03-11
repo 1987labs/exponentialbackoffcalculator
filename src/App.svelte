@@ -123,35 +123,6 @@
       </tbody>
     </Table>
   </Container>
-
-  <h2>Technologies In-Use</h2>
-  <Row>
-    <Col>
-      <a href="https://svelte.dev/">Svelte</a>
-    </Col>
-  </Row>
-  <Row>
-    <Col>
-      <a href="https://sveltestrap.js.org/">SVELTESTRAP</a>
-    </Col>
-  </Row>
-  <Row>
-    <Col>
-      <a href="https://render.com/">render</a>
-    </Col>
-  </Row>
-  <Row>
-    <Col>
-      <a href="https://katex.org/"><Katex math={"KATEX.org"} /></a>
-    </Col>
-  </Row>
-  <Row>
-    <Col>
-      Inspired by <a href="https://exponentialbackoffcalculator.com/"
-        >exponentialbackoffcalculator.com</a
-      >
-    </Col>
-  </Row>
 </main>
 <Footer />
 
